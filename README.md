@@ -5,4 +5,4 @@ An kafka application which implements the following interface using python
 
 * init(config)
 * sendMessage(topic, message)
-* consumerMessage(source_topic,target_topic) 
+* consumerMessage(topic) 
