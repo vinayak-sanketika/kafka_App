@@ -29,25 +29,15 @@ class kafakapp:
                     if message.error():
                             print("Consumer error:", message.error())
                             continue
-                    data=json.loads(message.value().decode())
-                    print("data tyep",type(data))
-                    print("Received Message :",json.dumps(data))
-                    self.sendMessage("target",json.dumps(data))
+                     d=(message.value().decode())
+                    #print("d:",type(d))
+                    #str to dict
+                    print("Received Message :",d)
+                    
+                    self.sendMessage("target01",d)
                     #self.targetMessage("target")
 
-    # def targetMessage(self,targetTopic):
-    #         self.consumer.subscribe([targetTopic])
-                
-    #         while True:
-    #                 message=self.consumer.poll(1.0)
-    #                 if message is None:
-    #                     continue
-    #                 if message.error():
-    #                     print("Consumer error:", message.error())
-    #                     continue
-    #                 data=json.loads(message.value().decode())
-    #                 print("data tyep",type(data))
-    #                 print("Target Message :",json.dumps(data))
+    
 
 if __name__ == "__main__":
     config={
@@ -57,8 +47,7 @@ if __name__ == "__main__":
           }
     app=kafakapp(config)
 
-#     msg = read_file("/usr/local/kafka/appKafka/intents.json")
-#     json.dumps(msg)
+
     msg_json = "/usr/local/kafka/appKafka/data.json"
     json_list=[]
     with open (msg_json) as file:
