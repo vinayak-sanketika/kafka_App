@@ -16,7 +16,7 @@ class kafakapp:
         
 
     def sendMessage(self,topic,message):
-            self.producer.produce(topic,message.encode())
+            self.producer.produce(topic,message)
             self.producer.flush()
 
     def consumerMessage(self,topic):
@@ -29,7 +29,7 @@ class kafakapp:
                     if message.error():
                             print("Consumer error:", message.error())
                             continue
-                     d=(message.value().decode())
+                     d=(message.value())
                     #print("d:",type(d))
                     #str to dict
                     print("Received Message :",d)
